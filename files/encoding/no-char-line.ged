@@ -1,0 +1,12 @@
+0 HEAD
+1 SOUR GEDCOM_TEST_FILES
+2 NAME gedcom-test-files
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBM @U1@
+0 @U1@ SUBM
+1 NAME gedcom-test-files
+0 @I1@ INDI
+1 NAME Hélène /Exemple/
+0 TRLR

@@ -1,0 +1,15 @@
+{
+  "name": "gedcom-test-files",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Small synthetic GEDCOM 5.5.1 and 7.0 files with known faults, for testing genealogy software.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node test/verify.mjs"
+  },
+  "devDependencies": {
+    "@thememorypalace/gedcom-tools": "^0.1.0"
+  }
+}

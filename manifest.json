@@ -1,0 +1,329 @@
+[
+  {
+    "file": "files/valid/551-minimal.ged",
+    "bytes": 254,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [],
+    "title": "Smallest useful 5.5.1 file",
+    "explanation": "Header with GEDC, CHAR and SUBM, one submitter, one person, trailer. A reader that fails on this file fails on everything."
+  },
+  {
+    "file": "files/valid/551-family.ged",
+    "bytes": 1270,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [],
+    "title": "Three generations, 5.5.1",
+    "explanation": "Five people in two families with places, a source citation, a note split with CONC and CONT, and the common date modifiers (ABT, BEF, BET AND, FROM TO). Non-ASCII names in UTF-8."
+  },
+  {
+    "file": "files/valid/551-date-forms.ged",
+    "bytes": 473,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [],
+    "title": "Unusual but valid 5.5.1 dates",
+    "explanation": "Dual year (1648/9), Julian calendar escape, interpreted date with phrase, a date phrase alone, B.C., CAL and EST. All valid in 5.5.1; a checker should not call them errors, and a 5.5.1 to 7.0 converter has to translate most of them.",
+    "knownDifferences": [
+      {
+        "tool": "gedcom-tools 0.1.0",
+        "codes": [
+          "bad_date"
+        ],
+        "note": "reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file."
+      }
+    ]
+  },
+  {
+    "file": "files/valid/70-minimal.ged",
+    "bytes": 163,
+    "version": "7.0",
+    "encoding": "UTF-8",
+    "faults": [],
+    "title": "Smallest useful 7.0 file",
+    "explanation": "A 7.0 header has no CHAR and no SUBM requirement; the file is always UTF-8."
+  },
+  {
+    "file": "files/valid/70-family.ged",
+    "bytes": 1025,
+    "version": "7.0",
+    "encoding": "UTF-8",
+    "faults": [],
+    "title": "Three people, 7.0",
+    "explanation": "Uses the 7.0 features that 5.5.1 readers often stumble over: SCHMA with an extension tag, LANG as a BCP 47 tag, SNOTE, EXID with TYPE, a value starting with an escaped @@, PEDI under FAMC, a date with PHRASE and an OBJE record with a media type."
+  },
+  {
+    "file": "files/links/broken-pointer.ged",
+    "bytes": 312,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "broken_pointer"
+    ],
+    "title": "Pointers to records that do not exist",
+    "explanation": "I1 points to family @F9@ and F1 points to wife @I99@; neither record exists. Typical after someone deletes records by hand or exports part of a tree."
+  },
+  {
+    "file": "files/links/duplicate-ids.ged",
+    "bytes": 348,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "duplicate_id"
+    ],
+    "title": "Two records with the same ID",
+    "explanation": "@I2@ is used twice. Which one a pointer means is undefined; programs silently keep the first, keep the last, or merge them. Common when two files are pasted together."
+  },
+  {
+    "file": "files/links/one-sided-link.ged",
+    "bytes": 285,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "one_sided_link"
+    ],
+    "title": "Links that only point one way",
+    "explanation": "I1 says it is a spouse in F1, but F1 has no HUSB or WIFE pointing back. F1 lists I2 as a child, but I2 has no FAMC. GEDCOM 5.5.1 expects both directions; readers that follow only one side lose people."
+  },
+  {
+    "file": "files/links/empty-family.ged",
+    "bytes": 246,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "empty_family"
+    ],
+    "title": "A family without members",
+    "explanation": "F1 has a marriage but no husband, wife or children. Usually left behind after people were deleted."
+  },
+  {
+    "file": "files/links/own-ancestor.ged",
+    "bytes": 375,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "own_ancestor"
+    ],
+    "title": "A person who is their own ancestor",
+    "explanation": "Mira is Lars's child and Lars is Mira's child. Any code that walks ancestors or descendants without a visited set loops on this file."
+  },
+  {
+    "file": "files/dates/invalid-calendar-dates.ged",
+    "bytes": 526,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "bad_date"
+    ],
+    "title": "Dates that do not exist or are not GEDCOM",
+    "explanation": "31 FEB, 31 APR and day 0 do not exist. 12/03/1921 is ambiguous (December or March) and not a GEDCOM date. JULY 4 1922 uses a full month name in the wrong order. 30 APR 1901 is the one valid date, as a control."
+  },
+  {
+    "file": "files/dates/death-before-birth.ged",
+    "bytes": 268,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "death_before_birth"
+    ],
+    "title": "Death before birth",
+    "explanation": "Usually a typo in the year, or the birth date of a child entered on the parent."
+  },
+  {
+    "file": "files/dates/family-chronology.ged",
+    "bytes": 688,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "child_before_parent",
+      "parent_too_young",
+      "born_after_mother_death"
+    ],
+    "title": "Children that cannot belong to these parents",
+    "explanation": "Otto (1899) is born before both parents. Anna (1910) has a father of 9 and a mother of 7. Jan (1935) is born five years after his mother died in 1930. Typical of two people with the same name merged into one."
+  },
+  {
+    "file": "files/dates/too-old.ged",
+    "bytes": 257,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "too_old"
+    ],
+    "title": "A lifespan of 150 years",
+    "explanation": "Born 1700, died 1850. Mostly a father and son with the same name taken for one person."
+  },
+  {
+    "file": "files/encoding/ansel.ged",
+    "bytes": 334,
+    "version": "5.5.1",
+    "encoding": "ANSEL",
+    "faults": [
+      "encoding_ansel"
+    ],
+    "title": "ANSEL with combining marks",
+    "explanation": "CHAR ANSEL, as written by older genealogy programs. In ANSEL the accent byte comes before the letter: é is 0xE2 0x65, ü is 0xE8 0x75. Ł (0xA1), ł (0xB1) and ß (0xCF) are single bytes. Decoded correctly, the names are Hélène Exemple, Jürgen Müller, Łucja Przykład and François Groß. This is not a fault in the file; checkers report it as information because many readers do not support ANSEL."
+  },
+  {
+    "file": "files/encoding/ansel-label-utf8-bytes.ged",
+    "bytes": 337,
+    "version": "5.5.1",
+    "encoding": "UTF-8 (labelled ANSEL)",
+    "faults": [
+      "encoding_mislabeled"
+    ],
+    "title": "Header says ANSEL, bytes are UTF-8",
+    "explanation": "A file that was converted to UTF-8 without updating the CHAR line. A reader that trusts the header turns every accented letter into two wrong characters."
+  },
+  {
+    "file": "files/encoding/windows-1252.ged",
+    "bytes": 319,
+    "version": "5.5.1",
+    "encoding": "Windows-1252",
+    "faults": [
+      "encoding_ansi"
+    ],
+    "title": "Windows-1252 labelled ANSI",
+    "explanation": "CHAR ANSI is not a 5.5.1 value but is common in files from Windows programs. é is the single byte 0xE9 and € is 0x80. Łucja and Przykład cannot be written in Windows-1252, so that person is left out."
+  },
+  {
+    "file": "files/encoding/no-char-line.ged",
+    "bytes": 203,
+    "version": "5.5.1",
+    "encoding": "Windows-1252 (no CHAR line)",
+    "faults": [
+      "encoding_no_char"
+    ],
+    "title": "No CHAR line",
+    "explanation": "5.5.1 requires CHAR. Without it a reader has to guess; here the bytes are Windows-1252."
+  },
+  {
+    "file": "files/encoding/invalid-utf8.ged",
+    "bytes": 217,
+    "version": "5.5.1",
+    "encoding": "Windows-1252 (labelled UTF-8)",
+    "faults": [
+      "encoding_mislabeled"
+    ],
+    "title": "Header says UTF-8, bytes are not",
+    "explanation": "The single byte 0xE9 for é is not valid UTF-8. A strict UTF-8 decoder either fails or produces the replacement character U+FFFD."
+  },
+  {
+    "file": "files/encoding/garbled-utf8.ged",
+    "bytes": 264,
+    "version": "5.5.1",
+    "encoding": "UTF-8 (double encoded)",
+    "faults": [
+      "garbled_chars"
+    ],
+    "title": "Double-encoded UTF-8 (mojibake)",
+    "explanation": "Valid UTF-8, but the names read HÃ©lÃ¨ne and MÃ¼ller: the text was decoded as Windows-1252 and encoded to UTF-8 a second time. Jürgen is correct, as a control. The damage is reversible when every affected sequence maps back exactly."
+  },
+  {
+    "file": "files/encoding/utf16le-bom.ged",
+    "bytes": 664,
+    "version": "5.5.1",
+    "encoding": "UTF-16LE with BOM",
+    "faults": [],
+    "title": "UTF-16 little endian",
+    "explanation": "CHAR UNICODE with a byte order mark, as written by some Windows programs. Every ASCII character is followed by a zero byte, which breaks readers that look for 0 HEAD in the raw bytes.",
+    "knownDifferences": [
+      {
+        "tool": "gedcom-tools 0.1.0",
+        "codes": [
+          "encoding_no_char"
+        ],
+        "note": "decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file."
+      }
+    ]
+  },
+  {
+    "file": "files/encoding/utf8-bom.ged",
+    "bytes": 340,
+    "version": "5.5.1",
+    "encoding": "UTF-8 with BOM",
+    "faults": [],
+    "title": "UTF-8 with byte order mark",
+    "explanation": "Valid. The three bytes EF BB BF come before 0 HEAD; readers that compare the first line literally fail to see the header."
+  },
+  {
+    "file": "files/structure/missing-trlr.ged",
+    "bytes": 205,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "trlr_missing"
+    ],
+    "title": "No trailer",
+    "explanation": "The file stops without 0 TRLR, often a sign that an export or upload was cut off."
+  },
+  {
+    "file": "files/structure/after-trlr.ged",
+    "bytes": 247,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "after_trlr"
+    ],
+    "title": "Records after the trailer",
+    "explanation": "Two files glued together, or an editor that appended records at the end. Most readers stop at TRLR and lose I2."
+  },
+  {
+    "file": "files/structure/no-version.ged",
+    "bytes": 168,
+    "version": "unknown",
+    "encoding": "UTF-8",
+    "faults": [
+      "version_missing"
+    ],
+    "title": "No GEDC.VERS",
+    "explanation": "Without a version a reader cannot tell 5.5.1 from 7.0."
+  },
+  {
+    "file": "files/structure/level-jump.ged",
+    "bytes": 240,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "level_jump"
+    ],
+    "title": "A level that skips one",
+    "explanation": "DATE is at level 3 directly under a level 1 line. The structure is undefined; some readers attach it to BIRT, others drop it."
+  },
+  {
+    "file": "files/structure/whitespace-and-line-endings.ged",
+    "bytes": 191,
+    "version": "5.5.1",
+    "encoding": "UTF-8",
+    "faults": [
+      "line_endings",
+      "blank_lines",
+      "leading_space"
+    ],
+    "title": "Mixed line endings, blank lines and indentation",
+    "explanation": "CRLF and LF in one file, empty lines, and lines indented with spaces. 5.5.1 allows none of the last two, but files edited by hand look like this."
+  },
+  {
+    "file": "files/structure/conc-in-v7.ged",
+    "bytes": 190,
+    "version": "7.0",
+    "encoding": "UTF-8",
+    "faults": [
+      "conc_in_v7"
+    ],
+    "title": "CONC in a 7.0 file",
+    "explanation": "CONC does not exist in 7.0. Seen in files where only the version number was changed."
+  },
+  {
+    "file": "files/structure/no-head.ged",
+    "bytes": 42,
+    "version": "unknown",
+    "encoding": "UTF-8",
+    "faults": [
+      "head_missing"
+    ],
+    "title": "No header",
+    "explanation": "The file starts with a record. Without HEAD there is no version and no character set."
+  }
+]

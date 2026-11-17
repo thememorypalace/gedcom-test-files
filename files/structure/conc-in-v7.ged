@@ -1,0 +1,10 @@
+0 HEAD
+1 GEDC
+2 VERS 7.0
+1 SOUR GEDCOM_TEST_FILES
+2 NAME gedcom-test-files
+0 @I1@ INDI
+1 NAME Mira /Testa/
+1 NOTE A note that is split
+2 CONC  with CONC, which 7.0 removed.
+0 TRLR

@@ -1,0 +1,71 @@
+0 HEAD
+1 SOUR GEDCOM_TEST_FILES
+2 NAME gedcom-test-files
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 SUBM @U1@
+1 DATE 17 NOV 2026
+1 LANG Dutch
+0 @U1@ SUBM
+1 NAME gedcom-test-files
+0 @I1@ INDI
+1 NAME Pieter /Voorbeeld/
+2 GIVN Pieter
+2 SURN Voorbeeld
+1 SEX M
+1 BIRT
+2 DATE ABT 1890
+2 PLAC Denkdorp, Verzonnen Provincie, Belgium
+1 DEAT
+2 DATE BET 1960 AND 1965
+1 OCCU Baker
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Hélène /Exemple/
+1 SEX F
+1 BIRT
+2 DATE 3 FEB 1895
+2 SOUR @S1@
+3 PAGE Entry 14
+1 DEAT
+2 DATE 21 OCT 1971
+1 FAMS @F1@
+1 NOTE Hélène kept the bakery accounts. This note is long enough to be continued
+2 CONC  on a second line with CONC, and it has a second paragraph
+2 CONT that starts on a new line with CONT.
+0 @I3@ INDI
+1 NAME Jürgen /Voorbeeld/
+1 SEX M
+1 BIRT
+2 DATE 7 JUL 1921
+1 FAMC @F1@
+1 FAMS @F2@
+0 @I4@ INDI
+1 NAME Erika /Mustermann/
+1 SEX F
+1 BIRT
+2 DATE BEF 1925
+1 FAMS @F2@
+0 @I5@ INDI
+1 NAME Anna /Voorbeeld/
+1 SEX F
+1 BIRT
+2 DATE 12 MAR 1951
+1 FAMC @F2@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 MARR
+2 DATE FROM 1919 TO 1920
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 CHIL @I5@
+1 MARR
+2 DATE 2 MAY 1949
+0 @S1@ SOUR
+1 TITL Invented parish register of Denkdorp
+0 TRLR

@@ -1,0 +1,11 @@
+0 HEAD
+1 GEDC
+2 VERS 7.0
+1 SOUR GEDCOM_TEST_FILES
+2 NAME gedcom-test-files
+0 @I1@ INDI
+1 NAME Anna /Voorbeeld/
+1 SEX F
+1 BIRT
+2 DATE 12 MAR 1921
+0 TRLR
