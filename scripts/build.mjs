@@ -193,7 +193,7 @@ add(
     explanation:
       "Dual year (1648/9), Julian calendar escape, interpreted date with phrase, a date phrase alone, B.C., CAL and EST. All valid in 5.5.1; a checker should not call them errors, and a 5.5.1 to 7.0 converter has to translate most of them.",
     knownDifferences: [
-      { tool: "gedcom-tools 0.1.0", codes: ["bad_date"], note: "reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file." },
+      { tool: "gedcom-tools 0.1.0", codes: ["bad_date"], note: "reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file. Fixed in gedcom-tools 0.1.1." },
     ],
   },
 );
@@ -554,7 +554,7 @@ add(
     title: "UTF-16 little endian",
     explanation: "CHAR UNICODE with a byte order mark, as written by some Windows programs. Every ASCII character is followed by a zero byte, which breaks readers that look for 0 HEAD in the raw bytes.",
     knownDifferences: [
-      { tool: "gedcom-tools 0.1.0", codes: ["encoding_no_char"], note: "decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file." },
+      { tool: "gedcom-tools 0.1.0", codes: ["encoding_no_char"], note: "decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file. Fixed in gedcom-tools 0.1.1." },
     ],
   },
 );

@@ -49,7 +49,7 @@ These should load without errors. Use them as a baseline and as round-trip input
 **551-family.ged**: Three generations, 5.5.1. Five people in two families with places, a source citation, a note split with CONC and CONT, and the common date modifiers (ABT, BEF, BET AND, FROM TO). Non-ASCII names in UTF-8.
 
 **551-date-forms.ged**: Unusual but valid 5.5.1 dates. Dual year (1648/9), Julian calendar escape, interpreted date with phrase, a date phrase alone, B.C., CAL and EST. All valid in 5.5.1; a checker should not call them errors, and a 5.5.1 to 7.0 converter has to translate most of them.
-Known difference in gedcom-tools 0.1.0: reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file.
+Known difference in gedcom-tools 0.1.0: reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file. Fixed in gedcom-tools 0.1.1.
 
 **70-minimal.ged**: Smallest useful 7.0 file. A 7.0 header has no CHAR and no SUBM requirement; the file is always UTF-8.
 
@@ -124,7 +124,7 @@ ANSEL, Windows-1252, UTF-16 and broken UTF-8. The same four invented names appea
 **garbled-utf8.ged**: Double-encoded UTF-8 (mojibake). Valid UTF-8, but the names read HÃ©lÃ¨ne and MÃ¼ller: the text was decoded as Windows-1252 and encoded to UTF-8 a second time. Jürgen is correct, as a control. The damage is reversible when every affected sequence maps back exactly.
 
 **utf16le-bom.ged**: UTF-16 little endian. CHAR UNICODE with a byte order mark, as written by some Windows programs. Every ASCII character is followed by a zero byte, which breaks readers that look for 0 HEAD in the raw bytes.
-Known difference in gedcom-tools 0.1.0: decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file.
+Known difference in gedcom-tools 0.1.0: decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file. Fixed in gedcom-tools 0.1.1.
 
 **utf8-bom.ged**: UTF-8 with byte order mark. Valid. The three bytes EF BB BF come before 0 HEAD; readers that compare the first line literally fail to see the header.
 

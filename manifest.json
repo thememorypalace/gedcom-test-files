@@ -31,7 +31,7 @@
         "codes": [
           "bad_date"
         ],
-        "note": "reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file."
+        "note": "reports the dual year 11 FEB 1648/9 as a bad date. That is a bug in the checker, not in this file. Fixed in gedcom-tools 0.1.1."
       }
     ]
   },
@@ -234,7 +234,7 @@
         "codes": [
           "encoding_no_char"
         ],
-        "note": "decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file."
+        "note": "decodes the file correctly but does not see the CHAR line in UTF-16. That is a bug in the checker, not in this file. Fixed in gedcom-tools 0.1.1."
       }
     ]
   },
